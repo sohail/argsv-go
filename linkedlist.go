@@ -59,20 +59,59 @@ func (l LinkedList) display(p Parser) {
 }
 
 // Receiver object is pass by value
-func (l LinkedList) find(c string, p Parser) bool {
+//func (l LinkedList) find(c string, p Parser) *Node {
+
+func (l LinkedList) find(c string, p Parser) *LinkedList {
 
 	node := l.head
+
+	ll := &LinkedList{0, nil, nil}
+
+	retHead := &Node{0, 0, 0, 0, nil, nil}
+	ret := retHead
+
+	ll.head = ret
 
 	for node != nil {
 		for i := uint32(defaultIndex); i <= p.getNOptions(node.c); i++ {
 			if p.getNthCommandNthOption(node.c, i) == c {
-				return true
+
+				//fmt.Println(ret.i, " ", ret.c, " ", ret.o, " ", ret.n)
+
+				if ret.i == 0 && ret.c == 0 && ret.o == 0 {
+					//ret = Node{node.i, node.c, node.o, node.n, nil, nil}
+					ret.i = node.i
+					ret.c = node.c
+					ret.o = node.o
+					ret.n = node.n
+					ret.next = nil
+					ret.prev = nil
+
+					//fmt.Println("Yes...")
+				} else {
+					ret.next = &Node{node.i, node.c, node.o, node.n, nil, ret}
+					ret.next.prev = ret
+					ret = ret.next
+
+					//fmt.Println("Hopla...")
+				}
+
+				ll.length++
 			}
 		}
 		node = node.next
 	}
 
-	return false
+	/*
+		for ret.prev != nil {
+			ret = ret.prev
+		}
+	*/
+
+	ll.tail = ret
+
+	//return retHead
+	return ll
 }
 
 // Receiver object is pass by value

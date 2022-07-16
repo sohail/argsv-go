@@ -75,10 +75,41 @@ func main() {
 
 	//fmt.Println("-> ", os.Args[1:list.maxCommonArgs()])
 
-	if list.find("d", obj) {
-		fmt.Println("Command found")
-	} else {
-		fmt.Sprintln("Command not found")
-	}
+	/*
+		if list.find("d", obj) {
+			fmt.Println("Command found")
+		} else {
+			fmt.Sprintln("Command not found")
+		}
+	*/
 
+	/*
+		node := list.find("d", obj)
+		//if node.i != 0 && node.c != 0 && node.o != 0 {
+		if node.i != 0 {
+			fmt.Println("Found...")
+
+			for node.next != nil {
+				fmt.Println(node.i, " ", node.c, " ", node.o, " ", node.n)
+				node = node.next
+			}
+
+			fmt.Println(node.i, " ", node.c, " ", node.o, " ", node.n)
+
+		} else {
+			fmt.Println("Not found...")
+		}
+	*/
+
+	ll := list.find("d", obj)
+	if ll.length > 0 {
+		fmt.Println("Found...", ll.length)
+		node := ll.head
+		for i := uint32(0); i < uint32(ll.length); i++ {
+			fmt.Println(node.i, " ", node.c, " ", node.o, " ", node.n)
+			node = node.next
+		}
+	} else {
+		fmt.Println("Not found...")
+	}
 }
