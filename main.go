@@ -4,19 +4,25 @@
 
 package main
 
-import (
-	"fmt"
-	"os"
-)
+import "fmt"
 
 var command = "?,/?,h,-h,/h,help,-help,--help(Displays help screen)#v,-v,/v,version,-version,--version(Displays version number)#d,-d,/d,dir,--dir(List files)"
 
 func main() {
 
-	list := LinkedList{0, nil, nil}
-	obj := Parser{command, defaultIndex}
+	/*
+		REAL CODE BLOCK
+		//			list := LinkedList{0, nil, nil}
+		//			obj := Parser{command, defaultIndex}
 
-	obj.parser()
+		//			obj.parser()
+	*/
+
+	ll := argsvGo(command, "dir")
+
+	if ll.length > 0 {
+		fmt.Println("Command found")
+	}
 
 	/*
 		fmt.Println(obj.getN())
@@ -52,18 +58,21 @@ func main() {
 		}
 	*/
 
-	for i := defaultIndex; i <= len(os.Args[1:]); i++ {
-		for j := defaultIndex; j <= int(obj.getN()); j++ {
-			for k := defaultIndex; k <= int(obj.getNOptions(uint32(j))); k++ {
+	/*
+		REAL CODE BLOCK
+		for i := defaultIndex; i <= len(os.Args[1:]); i++ {
+			for j := defaultIndex; j <= int(obj.getN()); j++ {
+				for k := defaultIndex; k <= int(obj.getNOptions(uint32(j))); k++ {
 
-				if os.Args[i] == obj.getNthCommandNthOption(uint32(j), uint32(k)) {
-					list.append(uint32(i), uint32(j), uint32(k))
+					if os.Args[i] == obj.getNthCommandNthOption(uint32(j), uint32(k)) {
+						list.append(uint32(i), uint32(j), uint32(k))
+					}
 				}
 			}
 		}
-	}
+	*/
 
-	list.update()
+	//list.update()
 
 	//fmt.Println("--> ", list.len())
 
@@ -71,7 +80,7 @@ func main() {
 
 	//fmt.Println(obj.getNthCommand(4))
 
-	list.display(obj)
+	//list.display(obj)
 
 	//fmt.Println("-> ", os.Args[1:list.maxCommonArgs()])
 
@@ -101,15 +110,20 @@ func main() {
 		}
 	*/
 
-	ll := list.find("d", obj)
-	if ll.length > 0 {
-		fmt.Println("Found...", ll.length)
-		node := ll.head
-		for i := uint32(0); i < uint32(ll.length); i++ {
-			fmt.Println(node.i, " ", node.c, " ", node.o, " ", node.n)
-			node = node.next
+	/*
+
+		REAL CODE BLOCK
+		ll := list.find("d", obj)
+		if ll.length > 0 {
+			fmt.Println("Found...", ll.length)
+			node := ll.head
+			for i := uint32(0); i < uint32(ll.length); i++ {
+				fmt.Println(node.i, " ", node.c, " ", node.o, " ", node.n)
+				node = node.next
+			}
+		} else {
+			fmt.Println("Not found...")
 		}
-	} else {
-		fmt.Println("Not found...")
-	}
+	*/
+
 }
