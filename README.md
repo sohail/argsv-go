@@ -2,6 +2,24 @@
 
 I got interested in GO programming language and to learn it, I started working on this project. 
 
+__Example__
+```
+package main
+
+import "fmt"
+
+var command = "?,/?,h,-h,/h,help,-help,--help(Displays help screen)#v,-v,/v,version,-version,--version(Displays version number)#d,-d,/d,dir,--dir(List files)"
+
+func main() {
+
+	ll := argsvGo(command, "dir")
+
+	if ll.length > 0 {
+		fmt.Println("Command found")
+	}
+}	
+
+```
 
 __Example__
 ```
