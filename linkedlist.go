@@ -2,8 +2,6 @@
  * linkedlist.go
  */
 
-// https://dev.to/divshekhar/golang-linked-list-data-structure-h20
-
 package main
 
 import (
