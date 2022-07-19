@@ -4,7 +4,14 @@ import (
 	"os"
 )
 
-func argsvGo(c string, a string) LinkedList {
+type Argument struct {
+	length     uint32
+	commonArgs uint32
+	head       *Node
+	tail       *Node
+}
+
+func argsvGo(c string, a string) Argument {
 
 	list := LinkedList{0, nil, nil}
 	obj := Parser{command, defaultIndex}
@@ -27,5 +34,10 @@ func argsvGo(c string, a string) LinkedList {
 
 	//return *ll
 
-	return *list.find(a, obj)
+	ll := list.find(a, obj)
+	ll.commonArgs = list.maxCommonArgs()
+
+	//return *list.find(a, obj)
+
+	return *ll
 }

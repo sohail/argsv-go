@@ -22,9 +22,8 @@ type Node struct {
 
 type LinkedList struct {
 	length uint32
-
-	head *Node
-	tail *Node
+	head   *Node
+	tail   *Node
 }
 
 // Receiver object is by reference
@@ -60,12 +59,13 @@ func (l LinkedList) display(p Parser) {
 
 // Receiver object is pass by value
 //func (l LinkedList) find(c string, p Parser) *Node {
-
-func (l LinkedList) find(c string, p Parser) *LinkedList {
+//func (l LinkedList) find(c string, p Parser) *LinkedList {
+func (l LinkedList) find(c string, p Parser) *Argument {
 
 	node := l.head
 
-	ll := &LinkedList{0, nil, nil}
+	//ll := &LinkedList{0, nil, nil}
+	ll := &Argument{0, 0, nil, nil}
 
 	retHead := &Node{0, 0, 0, 0, nil, nil}
 	ret := retHead
