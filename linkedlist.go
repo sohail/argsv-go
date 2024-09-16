@@ -1,5 +1,6 @@
 /*
- * linkedlist.go
+	  linkedlist.go
+	  Q@khaa.pk
  */
 
 package main
@@ -11,7 +12,7 @@ import (
 
 type Node struct {
 	i    uint32 // Index, index into command line arguments
-	c    uint32 // Command, the whole command string with all options and help string
+	c    uint32 // Index into command text, the whole command string with all options and help string
 	o    uint32 // Option, a single command line option
 	n    uint32 // argc for this command line option
 	next *Node
