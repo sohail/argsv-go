@@ -1,3 +1,8 @@
+/*
+	argsv.go
+	Q@khaa.pk
+ */
+
 package main
 
 import (
@@ -9,6 +14,13 @@ type Argument struct {
 	commonArgs uint32
 	head       *Node
 	tail       *Node
+}
+
+func argsvGoHelp(i uint32) string {
+
+	obj := Parser{command, i}
+
+	return obj.getNthCommandHelpString(i)	
 }
 
 func argsvGo(c string, a string) Argument {
