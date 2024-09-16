@@ -1,5 +1,6 @@
 /*
- * parser.go
+	parser.go
+	Q@khaa.pk
  */
 
 package main
@@ -116,6 +117,8 @@ func (p Parser) getNthCommandHelpString(i uint32) string {
 
 	var c string = p.getNthCommand(i)
 
+	//fmt.Println(c)
+	
 	if c != "" {
 
 		cuttingByTwo := strings.FieldsFunc(c, func(r rune) bool {
