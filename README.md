@@ -1,6 +1,11 @@
 **argsv.go**(Command line argument parser)
 
-I got interested in GO programming language and to learn it, I started working on this project. 
+I got interested in GO programming language and to learn it, I started working on this project.
+
+To see a working example of how to use the `argsv-go` library, check out the [main.go](main.go) file in this repository.
+The `main.go` file contains an example of how to parse multiple command aliases, list arguments, and provide help strings.
+
+In addition to the main.go file, you can explore the following examples to learn about various features of the argsv-go library
 
 __Example__
 ```
