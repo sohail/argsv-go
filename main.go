@@ -33,34 +33,41 @@ func main() {
 	ll := argsvGo(command, "dir")
 
 	// The `ll.length` property indicates the number of times the "dir" command was detected.
-	if ll.length > 0 {
-		fmt.Println("Command found, number of instances = ", ll.length)
-		// Each node contains details about a specific occurrence of the command.
-		/*
-			`node.c`: Index into the command string.
-			`node.i`: Index into the argument list (`argv`).
-			`node.n`: The number of arguments associated with this instance of the command.
-			`node.o`: The index into the command string for the specific alias used.
-		 */
-		node := ll.head
-		// The loop iterates through the linked list, printing these details for each occurrence of the "dir" command.
-		for i := uint32(0); i < ll.length; i++ {
-			fmt.Println( "Index into command string = ", node.c, 
-						 "\nIndex into argv = ", node.i, "\nargc of this command = ", node.n, "\nIndex into the command string for one praticulr name used = ", node.o, "\n and it is \"", os.Args[node.i] , "\"")
-			
-			fmt.Println("The command and its arguments are...") 			 
-			for j := uint32(0); j < node.n; j++ {
-				fmt.Println(os.Args[node.i + j])
-			}
-
-			fmt.Println("Help String = " + argsvGoHelp(node.c) + "\n")
-			node = node.next			
-		}
-	}
-	else {
+	if ll.length == 0 {
 		fmt.Println("Not a single instance of \"dir\" found in input.")
+		return
 	}
+	
+	fmt.Println("Command found, number of instances = ", ll.length)
+	// Each dirList contains details about a specific occurrence of the command.
+	/*
+		`dirList.c`: Index into the command string.
+		`dirList.i`: Index into the argument list (`argv`).
+		`dirList.n`: The number of arguments associated with this instance of the command.
+		`dirList.o`: The index into the command string for the specific alias used.
+	 */
+	dirList := ll.head
+	// The loop iterates through the linked list, printing these details for each occurrence of the "dir" command.
+	for i := uint32(0); i < ll.length; i++ {
+		fmt.Println( "Index into command string = ", dirList.c, 
+					 "\nIndex into argv = ", dirList.i, "\nargc of this command = ", dirList.n, "\nIndex into the command string for one praticulr name used = ", dirList.o, "\n and it is \"", os.Args[dirList.i] , "\"")
+			
+			
+		// If the 'dir' command is missing arguments, generate an error.
+		if !(dirList.n > 1) {
+    		fmt.Println("Error: The 'dir' command requires at least one argument.")
+		}
+			
+			
+		fmt.Println("The command and its arguments are...") 			 
+		for j := uint32(0); j < dirList.n; j++ {
+			fmt.Println(os.Args[dirList.i + j])
+		}
 
+		fmt.Println("Help String = " + argsvGoHelp(dirList.c) + "\n")
+		dirList = dirList.next			
+	}
+		
 	/*
 		This code block handles the printing of common arguments (arguments that are not associated with any specific command).
 		
